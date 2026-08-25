@@ -1,0 +1,298 @@
+{
+  "buildId": "PLOT3-A",
+  "projectName": "Plot 3 — Unit A",
+  "revision": 3,
+  "supersedes": 2,
+  "panels": [
+    {
+      "panelId": "EW-L1-N1",
+      "type": "external_wall",
+      "level": 1,
+      "zone": "north",
+      "width": 3600,
+      "height": 2700,
+      "openings": [
+        {
+          "x": 1200,
+          "w": 1200,
+          "h": 1400
+        }
+      ],
+      "span": null,
+      "loadBearing": true,
+      "weightKg": 148,
+      "status": "installed"
+    },
+    {
+      "panelId": "EW-L1-N2",
+      "type": "external_wall",
+      "level": 1,
+      "zone": "north",
+      "width": 2400,
+      "height": 2700,
+      "openings": [
+        {
+          "x": 600,
+          "w": 900,
+          "h": 1400
+        }
+      ],
+      "span": null,
+      "loadBearing": true,
+      "weightKg": 98,
+      "status": "planned"
+    },
+    {
+      "panelId": "EW-L1-E1",
+      "type": "external_wall",
+      "level": 1,
+      "zone": "east",
+      "width": 4800,
+      "height": 2700,
+      "openings": [
+        {
+          "x": 1800,
+          "w": 1200,
+          "h": 1400
+        }
+      ],
+      "span": null,
+      "loadBearing": true,
+      "weightKg": 192,
+      "status": "manufactured"
+    },
+    {
+      "panelId": "EW-L1-S1",
+      "type": "external_wall",
+      "level": 1,
+      "zone": "south",
+      "width": 3600,
+      "height": 2700,
+      "openings": [],
+      "span": null,
+      "loadBearing": true,
+      "weightKg": 148,
+      "status": "planned"
+    },
+    {
+      "panelId": "EW-L1-S2",
+      "type": "external_wall",
+      "level": 1,
+      "zone": "south",
+      "width": 2400,
+      "height": 2100,
+      "openings": [
+        {
+          "x": 900,
+          "w": 900,
+          "h": 2100
+        }
+      ],
+      "span": null,
+      "loadBearing": true,
+      "weightKg": 78,
+      "status": "in_transit"
+    },
+    {
+      "panelId": "EW-L1-W1",
+      "type": "external_wall",
+      "level": 1,
+      "zone": "west",
+      "width": 4800,
+      "height": 2700,
+      "openings": [],
+      "span": null,
+      "loadBearing": true,
+      "weightKg": 192,
+      "status": "manufactured"
+    },
+    {
+      "panelId": "IW-L1-01",
+      "type": "internal_wall",
+      "level": 1,
+      "zone": "internal",
+      "width": 3600,
+      "height": 2700,
+      "openings": [],
+      "span": null,
+      "loadBearing": true,
+      "weightKg": 85,
+      "status": "manufactured"
+    },
+    {
+      "panelId": "IW-L1-02",
+      "type": "internal_wall",
+      "level": 1,
+      "zone": "internal",
+      "width": 2400,
+      "height": 2700,
+      "openings": [],
+      "span": null,
+      "loadBearing": false,
+      "weightKg": 58,
+      "status": "planned"
+    },
+    {
+      "panelId": "IW-L1-03",
+      "type": "internal_wall",
+      "level": 1,
+      "zone": "internal",
+      "width": 1800,
+      "height": 2700,
+      "openings": [],
+      "span": null,
+      "loadBearing": false,
+      "weightKg": 44,
+      "status": "planned"
+    },
+    {
+      "panelId": "IW-L1-04",
+      "type": "internal_wall",
+      "level": 1,
+      "zone": "internal",
+      "width": 2400,
+      "height": 2700,
+      "openings": [],
+      "span": null,
+      "loadBearing": false,
+      "weightKg": 58,
+      "status": "in_transit"
+    },
+    {
+      "panelId": "FC-01",
+      "type": "floor_cassette",
+      "level": 1,
+      "zone": "floor",
+      "width": 1200,
+      "height": 350,
+      "openings": [],
+      "span": 4800,
+      "loadBearing": true,
+      "weightKg": 218,
+      "status": "manufactured"
+    },
+    {
+      "panelId": "FC-02",
+      "type": "floor_cassette",
+      "level": 1,
+      "zone": "floor",
+      "width": 1200,
+      "height": 350,
+      "openings": [],
+      "span": 4800,
+      "loadBearing": true,
+      "weightKg": 218,
+      "status": "planned"
+    },
+    {
+      "panelId": "FC-03",
+      "type": "floor_cassette",
+      "level": 1,
+      "zone": "floor",
+      "width": 1200,
+      "height": 350,
+      "openings": [],
+      "span": 3600,
+      "loadBearing": true,
+      "weightKg": 196,
+      "status": "planned"
+    },
+    {
+      "panelId": "EW-L2-N1",
+      "type": "external_wall",
+      "level": 2,
+      "zone": "north",
+      "width": 3600,
+      "height": 2700,
+      "openings": [
+        {
+          "x": 1200,
+          "w": 1200,
+          "h": 1400
+        }
+      ],
+      "span": null,
+      "loadBearing": true,
+      "weightKg": 148,
+      "status": "planned"
+    },
+    {
+      "panelId": "EW-L2-E1",
+      "type": "external_wall",
+      "level": 2,
+      "zone": "east",
+      "width": 4800,
+      "height": 2700,
+      "openings": [],
+      "span": null,
+      "loadBearing": true,
+      "weightKg": 192,
+      "status": "planned"
+    },
+    {
+      "panelId": "EW-L2-S1",
+      "type": "external_wall",
+      "level": 2,
+      "zone": "south",
+      "width": 3600,
+      "height": 2700,
+      "openings": [],
+      "span": null,
+      "loadBearing": true,
+      "weightKg": 148,
+      "status": "planned"
+    },
+    {
+      "panelId": "EW-L2-W1",
+      "type": "external_wall",
+      "level": 2,
+      "zone": "west",
+      "width": 4800,
+      "height": 2700,
+      "openings": [],
+      "span": null,
+      "loadBearing": true,
+      "weightKg": 192,
+      "status": "planned"
+    },
+    {
+      "panelId": "IW-L2-01",
+      "type": "internal_wall",
+      "level": 2,
+      "zone": "internal",
+      "width": 3600,
+      "height": 2700,
+      "openings": [],
+      "span": null,
+      "loadBearing": true,
+      "weightKg": 85,
+      "status": "planned"
+    },
+    {
+      "panelId": "IW-L2-02",
+      "type": "internal_wall",
+      "level": 2,
+      "zone": "internal",
+      "width": 1800,
+      "height": 2700,
+      "openings": [],
+      "span": null,
+      "loadBearing": false,
+      "weightKg": 44,
+      "status": "planned"
+    },
+    {
+      "panelId": "RF-01",
+      "type": "roof_panel",
+      "level": 2,
+      "zone": "roof",
+      "width": 6000,
+      "height": 200,
+      "openings": [],
+      "span": 6000,
+      "loadBearing": true,
+      "weightKg": 235,
+      "status": "planned"
+    }
+  ]
+}

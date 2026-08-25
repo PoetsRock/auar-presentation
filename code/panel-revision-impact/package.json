@@ -1,0 +1,23 @@
+{
+  "name": "@auar/revision-impact",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Classifies which prefabricated panels a design revision affects, and what it costs, before approval.",
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "type-check": "tsc --noEmit",
+    "demo": "vite-node demo.ts",
+    "demo:json": "vite-node demo.ts -- --json"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.43",
+    "typescript": "^5.6.0",
+    "vitest": "^2.1.0"
+  }
+}

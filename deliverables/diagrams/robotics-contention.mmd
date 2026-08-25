@@ -1,0 +1,28 @@
+gantt
+    title Plan A - robotics by RESOURCE (contention check)
+    dateFormat YYYY-MM-DD
+    axisFormat %-d %b
+    excludes weekends
+
+    section ROBOTICS PEOPLE 1.8 FTE
+    v4.2a build - stop path             :crit, r1, 2026-09-01, 2026-09-07
+    a5 re-test - person 1               :crit, r2, 2026-09-16, 2026-09-22
+    v4.2b build - person 2 PINCH        :active, r3, 2026-09-16, 2026-09-25
+    Live cell support 1d per wk ongoing :done, r4, 2026-08-18, 2026-10-09
+
+    section SPARE CONTROLLER
+    Bench validation v4.2a - 0.5w       :crit, s1, 2026-09-08, 2026-09-10
+    Bench validation v4.2b - WAS MISSING :active, s2, 2026-09-28, 2026-09-30
+
+    section LIVE CELL
+    a3 rig measurement - cell stopped   :crit, c1, 2026-09-02, 2026-09-03
+    Deploy v4.2a + smoke                :crit, c2, 2026-09-11, 2026-09-15
+    a5 cell re-test                     :crit, c3, 2026-09-16, 2026-09-22
+    Deploy v4.2b - WAS MISSING          :active, c4, 2026-10-01, 2026-10-02
+    Rehearsals - now 1 week not 2       :crit, c5, 2026-10-05, 2026-10-09
+    DEMO Mon 12 Oct                     :crit, c6, 2026-10-12, 1d
+
+    section SOFTWARE WAITING ON THIS
+    Fleet Monitor vs simulator only     :done, w1, 2026-08-18, 2026-10-02
+    Fleet Monitor vs REAL cell data     :crit, w2, 2026-10-05, 2026-10-09
+    Inspector submitted Wed 23 Sep      :milestone, w3, 2026-09-23, 0d
