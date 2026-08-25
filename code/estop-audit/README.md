@@ -105,6 +105,111 @@ See `docs/firmware-event-schema-v4.2.md`.
 | `axis.halted` per axis | Per-axis deltas become **derived** rather than attached by amendment | `records._build_per_axis` |
 | `class` | Safety/operational classification comes from the source instead of a local table | `sequences.PAUSE_CLASSIFICATION` |
 
+## Why the code is shaped this way
+
+Condensed from `docs/build-log.md`, which records 54 decisions with what each
+costs if wrong. These are the ones that would look arbitrary otherwise.
+
+**A halt satisfies every outstanding stop demand, not one of them.** When more
+than one demand is open, "which request did this halt answer?" has no correct
+answer — physically it answered all of them. FIFO would report the others as
+unmatched, fabricating a safety finding against stops that worked. LIFO would
+report the shortest delta, which is the flattering bias and the wrong one to
+build into a safety record. Refusing to pair at all yields zero measurements on
+a cell with redundant triggers. Fan-out asserts only what is observable: N
+demands, one halt, N deltas, the earliest yielding the most conservative number,
+each record naming the others in `co_satisfied_with`.
+
+**Pairing lookahead is bounded by a stop episode, not a time window.** Without a
+bound, a stop that failed pairs with some later unrelated halt — reporting the
+*failed* stop as matched and the *successful* one as `no_halt_recorded`, both
+wrong in the worst available direction. A time window would fix it but needs a
+constant we would be inventing, and "why 30 seconds?" has no good answer at an
+inspection. `run.resumed` is an event the controller already emits, and it is
+explainable in one sentence: the cell started running again, so that stop was
+over. See Open questions — this rests on that event being guaranteed.
+
+**Same-second events are grouped and treated as simultaneous, never ordered.**
+Whole-second timestamps make events within one second genuinely unorderable, so
+arrival order must not decide an outcome. Before this was enforced, swapping two
+adjacent lines of an input file flipped a `matched` record into a fabricated
+"the cell did not stop" finding — which also claimed to be unambiguous. A *fast*
+cell makes that more likely, not less: a sub-second stop response puts request
+and halt in the same second. Any record whose content would differ under an
+alternative ordering carries `ordering_confidence: "ambiguous"` and a note
+naming the tied events. Records that would be identical either way stay
+`unambiguous`, deliberately — a flag on everything tells an inspector nothing.
+
+**Bounds take the union of two quantisation conventions.** We do not know whether
+the controller truncates or rounds to the second, so the interval is the one
+correct under either. `Δ = 0` is not clamped: two events in the same second bound
+the delta at `(−1 s, +1 s)` and set `causal_order_established: false`, because the
+halt cannot be shown to have followed the request at all.
+
+**`ResponseTime` is a distinct type from `Bound`** so a bare interval — a stoppage
+duration, say — cannot occupy a record's `response_time` slot without its method,
+clock caveat, and claim. The renderer computes its uncertainty wording *from* the
+record's bound fields rather than reading a stored string, so no rendering path
+can emit a controller-derived time without emitting what constrains it.
+
+**Identity is a content hash, and collisions are counted rather than hidden.**
+The source has no `eventId`. Hashing the full event including `ts` survives the
+real trap in the data (`nailing.started` legitimately appears twice for one
+panel), but two genuinely distinct events sharing every field and the same whole
+second are indistinguishable. `IngestReport.content_collisions` counts that case
+so a possible silent drop is a number on a report.
+
+**`verify_chain()` reports `records` and `head_hash`** because the chain cannot
+detect tail truncation — deleting records off the end leaves a shorter chain that
+verifies perfectly. Those two values are what a verifier holding an independently
+recorded anchor compares against. The gap does not close; it becomes someone's
+explicit responsibility.
+
+**Payload fields are guarded where they are used, not rejected at parse.**
+Envelope fields (`cellId`, `event`, `runId`) are type-checked and a bad one makes
+the line malformed. Payload fields are open by design, so a structured
+`run.paused` reason degrades to `unclassified` rather than discarding an
+otherwise-valid safety event. Unknown never becomes `operational`: an
+unrecognised pause reason is a question for a human.
+
+### Four decisions that were reversed
+
+Recorded because the reversals are more informative than the conclusions.
+
+| Was | Became | Why |
+|---|---|---|
+| A halt tied with its episode closer can stay `unambiguous` — the outcome is stable either way | Flag it | The module already flagged outcome-stable ties elsewhere, so the effect was that the same tie was disclosed when a record read *well* and hidden when it read *badly* |
+| Two closers sharing a second is a cosmetic wobble | Merge-blocking, fixed | `episode.closed_by` is record content and is printed on the inspector's page; two ingests of identical events gave the same `record_id` with different content and no flag |
+| Silent truncation of the cross-run candidate list is a test gap | A behaviour defect, fixed | A slice whose premise is *surface the near-miss without using it* must not withhold part of the near-miss silently |
+| The tied-halts gap is "attribution only, no numbers move" | `axes_stopped` moves | In a safety audit, which axes are recorded as having stopped is the payload, not attribution |
+
+## Known gaps that ship
+
+Each was consciously deferred with a recorded ruling; none is load-bearing, and
+all were reviewed. Full reasoning in `docs/build-log.md`.
+
+- **Same-second tie assessment is not uniform across all three sites.** The
+  matched path compares pairwise rather than scanning its timestamp group, so
+  with two halts in one second it can name one of them — and therefore *its*
+  `axes_stopped` — and report `unambiguous`, while the companion orphan record in
+  the same run does disclose the tie. The measured delta is invariant. The fix is
+  a rewrite using "would this record's content differ under an alternative
+  ordering of its group?" as one predicate at all three sites; it was declined on
+  the final fix round rather than shipped unverified.
+- **`episode_rests_on_a_tie` never resets**, so every later demand-less orphan in
+  an episode inherits ambiguity when at most one could actually flip. Over-
+  disclosure on an adverse record, which is the right side to err on.
+- **No plausibility bound on a large delta.** In an episode that never closes, an
+  unanswered request can pair with a halt arbitrarily later. It is flagged
+  ambiguous but not flagged *implausible*; bounding it needs a constant that is
+  the robotics lead's call.
+- **No integrity statement on the rendered page.** `verify_chain()`'s verdict,
+  `records` and `head_hash` are available from the service but do not appear on
+  the artefact handed to an inspector.
+- **`query_events` and iteration raise on a structurally damaged store** where
+  `verify_chain()` returns a verdict. An inspector calling retrieval first gets a
+  traceback rather than a precise `broken_at_seq`.
+
 ## Open questions
 
 Both need answers in week 1. An unanswered question is worse than either answer.
@@ -123,4 +228,5 @@ Both need answers in week 1. An unanswered question is worse than either answer.
 Not included, deliberately: web layer, database, CLI, live controller transport,
 buffer-and-reconcile (blocked on the firmware schema), Fleet Monitor UI.
 
-Design: `docs/superpowers/specs/2026-08-25-estop-audit-design.md`.
+Design: `docs/design.md`. Implementation plan: `docs/implementation-plan.md`.
+Full decision record: `docs/build-log.md`.
