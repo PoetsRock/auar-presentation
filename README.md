@@ -135,6 +135,17 @@ Raised rather than worked around. Full detail in
 
 ---
 
+## Running the slices
+
+```bash
+# Slice 1 — e-stop audit (Python 3.11+, stdlib only)
+cd code/estop-audit && uv sync --all-extras && uv run pytest      # 157 tests
+
+# Slice 2 — revision impact (Node 20+)
+cd code/panel-revision-impact && npm install && npm test          # 66 tests
+npx vite-node demo.ts        # prints the r3 → r4 classification
+```
+
 ## Repository layout
 
 ```
