@@ -37,7 +37,7 @@ def event_key(raw: Mapping[str, Any]) -> str:
     """Synthetic idempotency key: SHA-256 over the full canonical event.
 
     Includes ``ts``, which is what makes it safe against the trap documented in
-    docs/firmware-event-schema-v4.2.md lines 32-36, point 1 'No unique event identifier': ``nailing.started`` for
+    deliverables/firmware-event-schema-v4.2.md lines 32-36, point 1 'No unique event identifier': ``nailing.started`` for
     ``EW-L1-E1`` legitimately appears twice, either side of an e-stop resume.
     Deduping on ``(runId, panelId, event)`` would silently drop one of them.
 
@@ -48,7 +48,7 @@ def event_key(raw: Mapping[str, Any]) -> str:
     notices.
 
     TODO(firmware-v4.2): replace with the ``eventId`` field from the required
-    envelope in docs/firmware-event-schema-v4.2.md. Dedupe on that and only that.
+    envelope in deliverables/firmware-event-schema-v4.2.md. Dedupe on that and only that.
     """
     return "sha256:" + sha256_hex(canonical_json(raw))
 

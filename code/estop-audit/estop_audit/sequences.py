@@ -16,7 +16,7 @@ PAUSE_CLASSIFICATION: dict[str, str] = {
 }
 """``run.paused`` is overloaded: one event type carries both a safety stop and a
 routine material reload. An inspector's audit log must distinguish them
-(docs/firmware-event-schema-v4.2.md lines 51-54, point 5 'run.paused is overloaded').
+(deliverables/firmware-event-schema-v4.2.md lines 51-54, point 5 'run.paused is overloaded').
 
 Adding a firmware reason is a one-line change here. Anything absent from this
 table is ``unclassified`` -- never ``operational``. An unrecognised pause reason
@@ -109,7 +109,7 @@ def partition_runs(events: Iterable[Event]) -> list[RunView]:
     """Group events by ``(cell_id, run_id)`` and sort each group into analysis order.
 
     The partition key is the **pair**, not ``run_id`` alone. ``runId`` may legitimately
-    be null (docs/firmware-event-schema-v4.2.md line 70, "null for events outside a
+    be null (deliverables/firmware-event-schema-v4.2.md line 70, "null for events outside a
     run"); keying on it alone would collect every out-of-run event, across all cells and
     all time, into a single bucket -- reintroducing unbounded pairing lookahead through
     the back door.

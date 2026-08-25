@@ -20,7 +20,7 @@ const R = '\x1b[0m';
 
 function load(name: string): BuildModel {
   return JSON.parse(
-    readFileSync(new URL(`../${name}`, import.meta.url), 'utf-8'),
+    readFileSync(new URL(`../../${name}`, import.meta.url), 'utf-8'),
   ) as BuildModel;
 }
 

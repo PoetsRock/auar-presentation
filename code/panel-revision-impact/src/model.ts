@@ -14,9 +14,9 @@ export type {
   PanelStatus,
   PanelType,
   Zone,
-} from '../../build.interface';
+} from '../../../build.interface';
 
-import type { Panel } from '../../build.interface';
+import type { Panel } from '../../../build.interface';
 
 /**
  * Panel fields compared by the diff, in a fixed order so that `changedFields`

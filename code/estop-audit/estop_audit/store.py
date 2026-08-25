@@ -27,7 +27,7 @@ detects truncation by comparing them. Without such an anchor, completeness is
 not established.
 
 **And what it says nothing about at all:** events that never reached this file.
-With no ``seq`` in the source (docs/firmware-event-schema-v4.2.md lines 38-40,
+With no ``seq`` in the source (deliverables/firmware-event-schema-v4.2.md lines 38-40,
 point 2 'No sequence number') a gap is unobservable -- a quiet cell and a
 thirty-minute outage look identical. Events lost to a controller buffer overflow
 never arrive here, and no property of this file can reveal them.

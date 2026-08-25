@@ -34,7 +34,7 @@ def test_event_key_is_stable_and_prefixed():
 
 
 def test_event_key_distinguishes_the_two_legitimate_nailing_started_events():
-    # docs/firmware-event-schema-v4.2.md lines 38-44: nailing.started for EW-L1-E1
+    # deliverables/firmware-event-schema-v4.2.md lines 38-44: nailing.started for EW-L1-E1
     # appears twice, either side of an e-stop resume. Both are real. A key that
     # collapses them silently drops a genuine event.
     first = {"ts": "2026-03-11T07:14:51Z", "cellId": "CELL-01", "runId": "RUN-A",

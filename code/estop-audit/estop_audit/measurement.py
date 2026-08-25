@@ -15,7 +15,7 @@ from .events import Event
 CLOCK_AUTHORITY = "cell_wall_clock_unverified"
 """``ts`` is presumed cell wall-clock with no monotonic reference. An NTP step or
 a controller reboot can move it backwards and today that is undetectable
-(docs/firmware-event-schema-v4.2.md lines 47-50, point 4 'No clock authority'). Every interval computed from
+(deliverables/firmware-event-schema-v4.2.md lines 47-50, point 4 'No clock authority'). Every interval computed from
 ``ts`` inherits this caveat and says so."""
 
 

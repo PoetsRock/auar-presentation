@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 import type { BuildModel } from '../src/model.js';
 
 function load(name: string): BuildModel {
-  const url = new URL(`../../${name}`, import.meta.url);
+  const url = new URL(`../../../${name}`, import.meta.url);
   return JSON.parse(readFileSync(url, 'utf-8')) as BuildModel;
 }
 

@@ -20,7 +20,7 @@ PER_AXIS_UNAVAILABLE_REASON = (
 )
 PER_AXIS_EXPECTED_SOURCE = (
     "external rig instrumentation, or firmware v4.2 axis.halted events "
-    "(docs/firmware-event-schema-v4.2.md, 'Required for inspection action 3')"
+    "(deliverables/firmware-event-schema-v4.2.md, 'Required for inspection action 3')"
 )
 
 _MAX_CROSS_RUN_CANDIDATES = 3
