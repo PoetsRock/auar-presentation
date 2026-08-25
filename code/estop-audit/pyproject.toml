@@ -1,0 +1,12 @@
+[project]
+name = "estop-audit"
+version = "0.1.0"
+description = "E-stop audit and stop-response measurement for inspection actions a2/a3"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7.4"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

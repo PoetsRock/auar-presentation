@@ -1,0 +1,29 @@
+{"ts": "2026-03-11T07:00:00Z", "cellId": "CELL-01", "runId": "RUN-2026-03-11-A", "event": "run.started", "buildId": "PLOT3-A", "panelCount": 20, "operator": "op-114"}
+{"ts": "2026-03-11T07:00:12Z", "cellId": "CELL-01", "runId": "RUN-2026-03-11-A", "event": "panel.started", "panelId": "EW-L1-N1", "sequence": 1}
+{"ts": "2026-03-11T07:01:47Z", "cellId": "CELL-01", "runId": "RUN-2026-03-11-A", "event": "saw.cut.completed", "panelId": "EW-L1-N1", "cuts": 8}
+{"ts": "2026-03-11T07:04:07Z", "cellId": "CELL-01", "runId": "RUN-2026-03-11-A", "event": "frame.assembled", "panelId": "EW-L1-N1"}
+{"ts": "2026-03-11T07:04:15Z", "cellId": "CELL-01", "runId": "RUN-2026-03-11-A", "event": "nailing.started", "panelId": "EW-L1-N1", "pattern": "std-300"}
+{"ts": "2026-03-11T07:05:15Z", "cellId": "CELL-01", "runId": "RUN-2026-03-11-A", "event": "nailing.progress", "panelId": "EW-L1-N1", "nailsPlaced": 17, "nailsTotal": 34}
+{"ts": "2026-03-11T07:06:13Z", "cellId": "CELL-01", "runId": "RUN-2026-03-11-A", "event": "nailing.completed", "panelId": "EW-L1-N1", "nailsPlaced": 34, "misfires": 0}
+{"ts": "2026-03-11T07:06:28Z", "cellId": "CELL-01", "runId": "RUN-2026-03-11-A", "event": "panel.completed", "panelId": "EW-L1-N1", "cycleSeconds": 388}
+{"ts": "2026-03-11T07:06:40Z", "cellId": "CELL-01", "runId": "RUN-2026-03-11-A", "event": "panel.started", "panelId": "EW-L1-N2", "sequence": 2}
+{"ts": "2026-03-11T07:08:15Z", "cellId": "CELL-01", "runId": "RUN-2026-03-11-A", "event": "saw.cut.completed", "panelId": "EW-L1-N2", "cuts": 8}
+{"ts": "2026-03-11T07:10:35Z", "cellId": "CELL-01", "runId": "RUN-2026-03-11-A", "event": "frame.assembled", "panelId": "EW-L1-N2"}
+{"ts": "2026-03-11T07:10:43Z", "cellId": "CELL-01", "runId": "RUN-2026-03-11-A", "event": "nailing.started", "panelId": "EW-L1-N2", "pattern": "std-300"}
+{"ts": "2026-03-11T07:11:43Z", "cellId": "CELL-01", "runId": "RUN-2026-03-11-A", "event": "nailing.progress", "panelId": "EW-L1-N2", "nailsPlaced": 13, "nailsTotal": 26}
+{"ts": "2026-03-11T07:12:41Z", "cellId": "CELL-01", "runId": "RUN-2026-03-11-A", "event": "nailing.completed", "panelId": "EW-L1-N2", "nailsPlaced": 26, "misfires": 1}
+{"ts": "2026-03-11T07:12:56Z", "cellId": "CELL-01", "runId": "RUN-2026-03-11-A", "event": "panel.completed", "panelId": "EW-L1-N2", "cycleSeconds": 388}
+{"ts": "2026-03-11T07:13:08Z", "cellId": "CELL-01", "runId": "RUN-2026-03-11-A", "event": "panel.started", "panelId": "EW-L1-E1", "sequence": 3}
+{"ts": "2026-03-11T07:14:43Z", "cellId": "CELL-01", "runId": "RUN-2026-03-11-A", "event": "saw.cut.completed", "panelId": "EW-L1-E1", "cuts": 10}
+{"ts": "2026-03-11T07:14:51Z", "cellId": "CELL-01", "runId": "RUN-2026-03-11-A", "event": "nailing.started", "panelId": "EW-L1-E1", "pattern": "std-300"}
+{"ts": "2026-03-11T07:15:33Z", "cellId": "CELL-01", "runId": "RUN-2026-03-11-A", "event": "stop.requested", "source": "operator_estop", "panelId": "EW-L1-E1", "axisInMotion": true}
+{"ts": "2026-03-11T07:15:34Z", "cellId": "CELL-01", "runId": "RUN-2026-03-11-A", "event": "motion.halted", "panelId": "EW-L1-E1", "axesStopped": ["j1", "j2", "j3", "j4", "j5", "j6"]}
+{"ts": "2026-03-11T07:15:35Z", "cellId": "CELL-01", "runId": "RUN-2026-03-11-A", "event": "interlock.engaged", "zone": "assembly_table"}
+{"ts": "2026-03-11T07:15:37Z", "cellId": "CELL-01", "runId": "RUN-2026-03-11-A", "event": "run.paused", "reason": "estop"}
+{"ts": "2026-03-11T07:19:37Z", "cellId": "CELL-01", "runId": "RUN-2026-03-11-A", "event": "interlock.released", "zone": "assembly_table", "operator": "op-114"}
+{"ts": "2026-03-11T07:19:55Z", "cellId": "CELL-01", "runId": "RUN-2026-03-11-A", "event": "run.resumed", "resumeMode": "from_panel_start", "panelId": "EW-L1-E1"}
+{"ts": "2026-03-11T07:20:05Z", "cellId": "CELL-01", "runId": "RUN-2026-03-11-A", "event": "nailing.started", "panelId": "EW-L1-E1", "pattern": "std-300"}
+{"ts": "2026-03-11T07:22:03Z", "cellId": "CELL-01", "runId": "RUN-2026-03-11-A", "event": "nailing.completed", "panelId": "EW-L1-E1", "nailsPlaced": 41, "misfires": 0}
+{"ts": "2026-03-11T07:22:18Z", "cellId": "CELL-01", "runId": "RUN-2026-03-11-A", "event": "panel.completed", "panelId": "EW-L1-E1", "cycleSeconds": 624}
+{"ts": "2026-03-11T07:22:48Z", "cellId": "CELL-01", "runId": "RUN-2026-03-11-A", "event": "run.paused", "reason": "material_reload"}
+{"ts": "2026-03-11T07:26:18Z", "cellId": "CELL-01", "runId": "RUN-2026-03-11-A", "event": "run.resumed"}
